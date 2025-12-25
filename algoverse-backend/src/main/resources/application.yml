@@ -1,0 +1,16 @@
+server:
+  port: 9003
+
+spring: 
+   data:
+    mongodb:
+      uri: mongodb+srv://abhisreekrishna742_db_user:OtepNhURCnqp9RDD@algoverse.a1ylkpx.mongodb.net/
+      database: Algoverse
+
+
+
+   security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9002
