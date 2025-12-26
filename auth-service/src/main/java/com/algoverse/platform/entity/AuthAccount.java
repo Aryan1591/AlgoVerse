@@ -13,12 +13,12 @@ import java.util.Set;
 @Data
 public class AuthAccount {
   @Id
-  private String id;
+  private String Id;
 
   @Indexed(unique = true)
   private String email;
 
-  private String passwordHash;
+  private String password;
 
   private Set<Role> roles = new HashSet<>();
 

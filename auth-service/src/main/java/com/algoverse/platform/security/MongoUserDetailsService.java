@@ -24,7 +24,7 @@ public class MongoUserDetailsService implements UserDetailsService {
         .toList();
 
     return User.withUsername(acc.getEmail())
-        .password(acc.getPasswordHash())
+        .password(acc.getPassword())
         .authorities(authorities)
         .build();
   }

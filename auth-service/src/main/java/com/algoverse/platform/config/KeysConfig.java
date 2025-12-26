@@ -1,5 +1,6 @@
 package com.algoverse.platform.config;
 
+import com.nimbusds.jose.JWSAlgorithm;
 import com.nimbusds.jose.jwk.*;
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
@@ -19,15 +20,21 @@ import java.util.UUID;
 @Configuration
 public class KeysConfig {
 
+  // ✅ Keep a stable key id for the running instance
+  public static final String KEY_ID = UUID.randomUUID().toString();
+
   @Bean
   public JWKSource<SecurityContext> jwkSource() {
     KeyPair keyPair = generateRsaKey();
     RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
     RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
 
+    // ✅ IMPORTANT: use=sig and alg=RS256 so encoder can select it
     RSAKey rsaKey = new RSAKey.Builder(publicKey)
         .privateKey(privateKey)
-        .keyID(UUID.randomUUID().toString())
+        .keyUse(KeyUse.SIGNATURE)
+        .algorithm(JWSAlgorithm.PS256)
+        .keyID(KEY_ID)
         .build();
 
     JWKSet jwkSet = new JWKSet(rsaKey);
@@ -46,7 +53,7 @@ public class KeysConfig {
 
   @Bean
   public AuthorizationServerSettings authorizationServerSettings(
-      @Value("${app.issuer:http://localhost:9002}") String issuer
+      @Value("${app.issuer:http://localhost:9000}") String issuer
   ) {
     return AuthorizationServerSettings.builder().issuer(issuer).build();
   }
