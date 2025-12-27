@@ -1,0 +1,27 @@
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+
+# Data and Storage
+data/
+chroma_db/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Temporary scripts
+reproduce_issue.py
+debug_rag.py
+check_retrieval.py
+check_transcript.py
