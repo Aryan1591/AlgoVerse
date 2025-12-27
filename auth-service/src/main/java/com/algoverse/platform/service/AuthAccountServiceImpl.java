@@ -2,7 +2,6 @@ package com.algoverse.platform.service;
 
 import com.algoverse.platform.dto.*;
 import com.algoverse.platform.entity.AuthAccount;
-import com.algoverse.platform.entity.Qualification;
 import com.algoverse.platform.entity.Role;
 import com.algoverse.platform.entity.UserDetails;
 import com.algoverse.platform.exception.EmailAlreadyExistsException;
