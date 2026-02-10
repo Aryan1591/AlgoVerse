@@ -15,6 +15,7 @@ public class UserProfile {
     @Indexed(unique = true)
     private String authId; // reference to AuthAccount.id
     private String displayName;
+    @Indexed(unique = true)
     private String leetCodeUserName;
     private boolean active = true;
     private MemberShip memberShip;
