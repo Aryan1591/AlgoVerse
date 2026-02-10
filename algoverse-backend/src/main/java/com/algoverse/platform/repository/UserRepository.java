@@ -2,6 +2,8 @@ package com.algoverse.platform.repository;
 
 import com.algoverse.platform.entity.Stats;
 import com.algoverse.platform.entity.UserProfile;
+import com.algoverse.platform.utils.Constants;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -35,5 +37,23 @@ public class UserRepository {
         Query query = new Query();
         query.addCriteria(Criteria.where("active").is(true));
         return mongoTemplate.find(query, UserProfile.class);
+    }
+
+    public UserProfile findByLeetCodeUserName(String leetCodeUserName) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where(Constants.LEETCODE_USERNAME).is(leetCodeUserName));
+        return mongoTemplate.findOne(query, UserProfile.class);
+    }
+
+    public List<UserProfile> findByBatchId(String batchId) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where(Constants.BATCH_ID).is(batchId));
+        return mongoTemplate.find(query, UserProfile.class);
+    }
+
+    public UserProfile findByAuthId(String authId) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where(Constants.AUTH_ID).is(authId));
+        return mongoTemplate.findOne(query, UserProfile.class);
     }
 }
