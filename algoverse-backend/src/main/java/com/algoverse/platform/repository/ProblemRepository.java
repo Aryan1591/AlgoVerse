@@ -12,6 +12,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
 import java.time.Duration;
@@ -23,6 +24,7 @@ import com.algoverse.platform.entity.Category;
 
 @RequiredArgsConstructor
 @Slf4j
+@Repository
 public class ProblemRepository {
 
     private static final String PROBLEMS_CACHE_KEY = "problems:all";
