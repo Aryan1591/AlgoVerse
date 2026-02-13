@@ -1,6 +1,5 @@
 package com.algoverse.platform.scheduler;
 
-import com.algoverse.platform.entity.Category;
 import com.algoverse.platform.entity.Problem;
 import com.algoverse.platform.entity.UserProfile;
 import com.algoverse.platform.repository.ProblemRepository;
@@ -28,17 +27,17 @@ public class SyncScheduler {
     public void runSyncProcess() {
         List<Problem> problemList = problemRepository.getAllProblems();
         List<UserProfile> activeProfiles = userRepository.findActiveUserProfile();
-        Map<String, Category> problemScoreMap = buildProblemScoreMap(problemList);
+        Map<String, Problem> problemMap = buildProblemMap(problemList);
         for (UserProfile userProfile : activeProfiles) {
-            leetCodeSyncService.syncUserProblems(userProfile, problemScoreMap);
+            leetCodeSyncService.syncUserProblems(userProfile, problemMap);
         }
     }
 
-    private Map<String, Category> buildProblemScoreMap(List<Problem> problems) {
-        Map<String, Category> problemScoreMap = new HashMap<>();
+    private Map<String, Problem> buildProblemMap(List<Problem> problems) {
+        Map<String, Problem> problemMap = new HashMap<>();
         for (Problem problem : problems) {
-            problemScoreMap.put(problem.getTitle(), problem.getCategory());
+            problemMap.put(problem.getTitle(), problem);
         }
-        return problemScoreMap;
+        return problemMap;
     }
 }
