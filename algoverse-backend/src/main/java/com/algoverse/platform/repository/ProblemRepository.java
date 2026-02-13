@@ -7,7 +7,19 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 import java.time.Duration;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.util.StringUtils;
+
+import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.regex.Pattern;
+import com.algoverse.platform.entity.Category;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -47,5 +59,34 @@ public class ProblemRepository {
         // Evict cache after saving
         redisCacheService.delete(PROBLEMS_CACHE_KEY);
         log.info("Cache evicted for key: {}", PROBLEMS_CACHE_KEY);
+    }
+
+    public Page<Problem> findProblems(String title, Set<String> topics, Category category, Pageable pageable) {
+        List<Criteria> criteria = new ArrayList<>();
+
+        if (StringUtils.hasText(title)) {
+            // Case-insensitive regex search for title containing the query string
+            criteria.add(Criteria.where("title").regex(Pattern.quote(title), "i"));
+        }
+
+        if (topics != null && !topics.isEmpty()) {
+            criteria.add(Criteria.where("topics").all(topics));
+        }
+
+        if (category != null) {
+            criteria.add(Criteria.where("category").is(category));
+        }
+
+        Query query = new Query();
+        if (!criteria.isEmpty()) {
+            query.addCriteria(new Criteria().andOperator(criteria.toArray(new Criteria[0])));
+        }
+
+        long count = mongoTemplate.count(query, Problem.class);
+
+        query.with(pageable);
+        List<Problem> problems = mongoTemplate.find(query, Problem.class);
+
+        return new PageImpl<>(problems, pageable, count);
     }
 }

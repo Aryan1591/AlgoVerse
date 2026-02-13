@@ -19,6 +19,7 @@ import java.util.List;
 public class UserRepository {
 
     private final MongoTemplate mongoTemplate;
+
     public void updateStats(String userId, Stats stats) {
 
         Query query = new Query();
@@ -31,6 +32,19 @@ public class UserRepository {
         mongoTemplate.updateFirst(query, update, UserProfile.class);
 
         log.info("Updated stats for user {}", userId);
+    }
+
+    public void incrementStats(String userId, int easyDiff, int mediumDiff, int hardDiff) {
+        Query query = new Query(Criteria.where("id").is(userId));
+        Update update = new Update()
+                .inc("stats.easySolved", easyDiff)
+                .inc("stats.mediumSolved", mediumDiff)
+                .inc("stats.hardSolved", hardDiff)
+                .inc("stats.totalSolved", easyDiff + mediumDiff + hardDiff)
+                .set("updatedAt", Instant.now());
+
+        mongoTemplate.updateFirst(query, update, UserProfile.class);
+        log.info("Incremented stats for user {}: +E{}, +M{}, +H{}", userId, easyDiff, mediumDiff, hardDiff);
     }
 
     public List<UserProfile> findActiveUserProfile() {

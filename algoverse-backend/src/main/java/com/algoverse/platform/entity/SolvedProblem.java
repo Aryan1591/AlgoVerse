@@ -9,7 +9,7 @@ import java.time.Instant;
 
 @Document(collection = "solved_problems")
 @Data
-@CompoundIndex(def = "{'userId': 1, 'problemName': 1}", name = "user_problem_idx", unique = true)
+@CompoundIndex(def = "{'userId': 1, 'problemId': 1}", name = "user_problem_idx", unique = true)
 public class SolvedProblem {
 
     @Id
@@ -17,6 +17,7 @@ public class SolvedProblem {
     private String userId;
     private String problemSlug;
     private String problemName;
+    private String problemId;
     private Instant solvedAt;
     private String language;
     private Instant createdAt;
