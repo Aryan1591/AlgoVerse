@@ -12,7 +12,7 @@ import java.security.Principal;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/api/problems")
+@RequestMapping("/api/v1/problems")
 @RequiredArgsConstructor
 public class ProblemController {
 
