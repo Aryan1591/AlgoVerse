@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.algoverse.platform.dto.ErrorResponse;
 
-@RestControllerAdvice
+//@RestControllerAdvice
 public class GlobalExceptionHandler {
     
     @ExceptionHandler(UserNotFoundException.class)

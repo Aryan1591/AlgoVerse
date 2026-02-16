@@ -1,0 +1,18 @@
+// src/main/java/com/algoverse/monolith/config/WebJacksonConfig.java
+package com.algoverse.platform.security_config;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class WebJacksonConfig {
+
+  @Bean
+  public ObjectMapper objectMapper() {
+    ObjectMapper om = new ObjectMapper();
+    om.registerModule(new JavaTimeModule());
+    return om;
+  }
+}
