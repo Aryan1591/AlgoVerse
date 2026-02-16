@@ -115,8 +115,10 @@ public class RedisConfig {
 
     /**
      * RedisTemplate for String values
+     * 
      */
-    @Bean
+    
+    @Bean(name = "customStringRedisTemplate")
     public RedisTemplate<String, String> stringRedisTemplate(
             RedisConnectionFactory connectionFactory) {
 
