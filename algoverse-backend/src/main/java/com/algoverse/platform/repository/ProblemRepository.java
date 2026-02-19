@@ -5,6 +5,7 @@ import com.algoverse.platform.service.RedisCacheService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.time.Duration;
 import org.springframework.data.domain.Page;

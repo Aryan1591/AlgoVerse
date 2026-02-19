@@ -1,3 +1,8 @@
+/**
+ * This configuration class enables asynchronous execution and scheduled tasks.
+ * It defines a custom ThreadPoolTaskExecutor to manage background tasks efficiently,
+ * and configures RestTemplate for inter-service communication and ObjectMapper for JSON serialization.
+ */
 package com.algoverse.platform.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;

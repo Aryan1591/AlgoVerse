@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "title": "Two Sum",
+    "difficulty": "Easy",
+    "solved": true,
+    "leetcodeUrl": "https://leetcode.com/problems/two-sum/",
+    "youtubeUrl": "https://youtube.com/watch?v=abc"
+  },
+  {
+    "id": 2,
+    "title": "Reverse Linked List",
+    "difficulty": "Medium",
+    "solved": false,
+    "leetcodeUrl": "https://leetcode.com/problems/reverse-linked-list/",
+    "youtubeUrl": "https://youtube.com/watch?v=xyz"
+  },
+  {
+    "id": 3,
+    "title": "Maximum Subarray",
+    "difficulty": "Medium",
+    "topics": ["Array", "DP"],
+    "leetcodeUrl": "https://leetcode.com/problems/maximum-subarray/",
+    "solved": false
+  },
+  {
+    "id": 4,
+    "title": "Longest Substring Without Repeating Characters",
+    "difficulty": "Medium",
+    "topics": ["Sliding Window", "String"],
+    "leetcodeUrl": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+    "solved": false
+  }
+]

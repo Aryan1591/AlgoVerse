@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/AlgoVerse.iml" filepath="$PROJECT_DIR$/.idea/AlgoVerse.iml" />
+      <module fileurl="file://$PROJECT_DIR$/algoverse-backend/algoverse-backend.iml" filepath="$PROJECT_DIR$/algoverse-backend/algoverse-backend.iml" />
+    </modules>
+  </component>
+</project>
