@@ -1,3 +1,7 @@
+/**
+ * configured MongoTemplate for advanced querying and aggregation
+ * use cases beyond basic repository operations, enabling analytics and progress tracking
+ */
 package com.algoverse.platform.config;
 
 import org.springframework.context.annotation.Bean;

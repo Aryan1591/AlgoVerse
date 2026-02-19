@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: linear-gradient(-45deg, #020617, #111827, #1e293b, #020617);
+  background-size: 300% 300%;
+  animation: gradientMove 12s ease infinite;
+  color: white;
+  font-family: Inter, sans-serif;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== FLOATING ANIMATION ===== */
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* ===== GLASSMORPHISM CARD ===== */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* ===== GLOW TEXT ===== */
+.glow {
+  text-shadow: 0 0 25px rgba(99, 102, 241, 0.8);
+}
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+.glass-card:hover {
+  border-color: rgba(99,102,241,0.7);
+  box-shadow: 0 0 25px rgba(99,102,241,0.6);
+}
+
+@keyframes spin360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate-emoji {
+  animation: spin360 0.8s ease-in-out;
+}
+
+@keyframes spin360 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* make emoji rotators inline-block, center origin, and loop forever */
+.rotate-emoji {
+  display: inline-block;
+  transform-origin: center center;
+  animation: spin360 0.8s linear infinite;
+  will-change: transform;
+}
+/* optional: rotate only on hover */
+.rotate-emoji:hover {
+  animation: spin360 0.8s linear infinite;
+}
